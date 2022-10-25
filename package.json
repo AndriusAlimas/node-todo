@@ -16,7 +16,7 @@
     "url": "https://github.com/AndriusAlimas/node-todo/issues"
   },
   "homepage": "https://github.com/AndriusAlimas/node-todo#readme",
-  "dependencies": {
+  "devDependencies": {
     "express": "^4.18.2"
   }
 }
