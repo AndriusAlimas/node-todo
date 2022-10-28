@@ -29,10 +29,7 @@ module.exports = function (app) {
       (err, result) =>
         result.length === 0 &&
         Todos.create(starterTodos, function (err, results) {
-          if (err) {
-            console.log(err);
-          }
-
+          if (err) throw err;
           res.send(results);
         })
     );
