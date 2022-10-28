@@ -16,7 +16,7 @@
     "url": "https://github.com/AndriusAlimas/node-todo/issues"
   },
   "homepage": "https://github.com/AndriusAlimas/node-todo#readme",
-  "devDependencies": {
+  "dependencies": {
     "body-parser": "^1.20.1",
     "cryptr": "^6.0.3",
     "ejs": "^3.1.8",
