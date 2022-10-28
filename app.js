@@ -1,14 +1,14 @@
-var express = require("express");
-var app = express();
+const express = require("express");
+const app = express();
 const mongoose = require("mongoose");
-const { getDbConnectionString } = require("./config");
 const config = require("./config");
-var port = process.env.PORT || 3000;
+const setupController = require("./controllers/setupController");
+const port = process.env.PORT || 3000;
 
 app.use("/assets", express.static(__dirname + "/public"));
 
 app.set("view engine", "ejs");
 
 mongoose.connect(config.getDbConnectionString());
-
+setupController(app);
 app.listen(port);
