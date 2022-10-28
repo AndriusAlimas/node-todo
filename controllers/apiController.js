@@ -20,4 +20,43 @@ module.exports = function (app) {
       res.send(todo);
     });
   });
+
+  // add todo inside user
+  app.post("/api/todo", function (req, res) {
+    // if i have this already todo
+    if (req.body.id) {
+      Todos.findByIdAndUpdate(
+        req.body.id,
+        {
+          todo: req.body.todo,
+          isDone: req.body.isDone,
+          hasAttachment: req.body.hasAttachment,
+        },
+        function (err, todo) {
+          if (err) throw err;
+          res.send("Success");
+        }
+      );
+    } else {
+      // i don't have this todo lets create
+      const newTodo = Todos({
+        username: "test",
+        todo: req.body.todo,
+        isDone: req.body.isDone,
+        hasAttachment: req.body.hasAttachment,
+      });
+      newTodo.save(function (err) {
+        if (err) throw err;
+        res.send("Success");
+      });
+    }
+  });
+
+  // delete todo
+  app.delete("/api/todo", function (req, res) {
+    Todos.findByIdAndRemove(req.body.id, function (err) {
+      if (err) throw err;
+      res.send("Success");
+    });
+  });
 };
